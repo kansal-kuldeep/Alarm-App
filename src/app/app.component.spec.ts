@@ -1,0 +1,40 @@
+import { TestBed, async } from '@angular/core/testing';
+import { RouterTestingModule } from '@angular/router/testing';
+import { AppComponent } from './app.component';
+import { HeaderComponent } from './header/header.component';
+import { NavbarComponent } from './navbar/navbar.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { CUSTOM_ELEMENTS_SCHEMA, inject, Inject } from '@angular/core';
+import { SharedDataService } from './shared/services/shareddata.service';
+import { HttpClientModule } from '@angular/common/http';
+
+describe('AppComponent', () => {
+  beforeEach(async(() => {
+    TestBed.configureTestingModule({
+      imports: [
+        RouterTestingModule,
+        HttpClientModule
+      ],
+      declarations: [
+        AppComponent,
+        HeaderComponent,
+        NavbarComponent,
+        DashboardComponent
+      ],
+      schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
+      providers: [SharedDataService]
+    }).compileComponents();
+  }));
+
+  it('should create the app', () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    const app = fixture.debugElement.componentInstance;
+    expect(app).toBeTruthy();
+  });
+
+  it(`should have as title 'Alarm-App'`, () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    const app = fixture.debugElement.componentInstance;
+    expect(app.title).toEqual('Alarm-App');
+  });
+});

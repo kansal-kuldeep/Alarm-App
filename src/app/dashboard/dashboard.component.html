@@ -1,0 +1,31 @@
+<h1>Alarms Views</h1>
+
+<p-tabMenu [model]="navbarMenuItems" [activeItem]="navbarMenuItems[0]"></p-tabMenu>
+
+
+<p-table [columns]="cols" selectionMode="single" [(selection)]="selectedCar" [value]="alarmsToDisplay">
+    <ng-template pTemplate="header">
+        <tr>
+            <th style="width: 3em">
+                <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+            </th>
+            <th *ngFor="let col of cols">
+                {{col.header}}
+            </th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-alarm let-columns="columns">
+        <tr>
+            <td>
+                <p-tableCheckbox [value]="alarm"></p-tableCheckbox>
+            </td>
+            <td id="{{alarm[col.field]}}" [ngClass]="{'highlight-severity': isHighlightSeverity==true}" *ngFor="let col of cols">
+                    {{alarm[col.field]}}
+            </td>
+        </tr>
+    </ng-template>
+</p-table>
+
+<div>
+    <p-chart type="pie" [data]="chartData" width="50vw" height="50vh"></p-chart>
+<div>

@@ -1,0 +1,14 @@
+<div class="container">
+    <div>
+        <button pButton type="button" label="Home" class="ui-button-raised"></button>
+    </div>
+    <div style="margin-left: auto;">
+        <p-dropdown [options]="menuItems" [(ngModel)]="selectedItem" (onChange)="onMenuSelection(selectedItem)" placeholder="Menu"></p-dropdown>
+    </div>
+    <div>
+        <button pButton type="button" label="Back" class="ui-button-raised"></button>
+    </div>
+</div>
+
+
+<p-toast position="bottom-right"></p-toast>
